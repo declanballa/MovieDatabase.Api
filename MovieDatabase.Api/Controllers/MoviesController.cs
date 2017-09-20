@@ -3,16 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using AutoMapper;
+using MovieDatabase.Api.Models;
+using MovieDatabase.Api.Services;
 
 namespace MovieDatabase.Api.Controllers
 {
     [Route("api/movies")]
     public class MoviesController : Controller
     {
+        private IMovieDatabaseRepository _movieDatabaseRepository;
+
+        public MoviesController(IMovieDatabaseRepository movieDatabaseRepository) {
+            _movieDatabaseRepository = movieDatabaseRepository;
+        }
+
         [HttpGet()]
-        public IEnumerable<string> Get()
+        public IActionResult GetMovies()
         {
-            return new string[] { "value1", "value2" };
+            var movieData = _movieDatabaseRepository.GetMovies();
+            var results = Mapper.Map<IEnumerable<MovieDto>>(movieData);
+
+            return Ok(results);
         }
     }
 }
