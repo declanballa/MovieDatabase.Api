@@ -18,7 +18,29 @@ namespace MovieDatabase.Api.Services
 
         public IEnumerable<Movie> GetMovies()
         {
-            return _context.Movies.OrderBy(c => c.Title).ToList();
+            return _context.Movies.OrderBy(m => m.Id).ToList();
+        }
+
+        public bool MovieExists(int id) {
+            return _context.Movies.Any(m => m.Id == id);
+        }
+
+        public void AddMovie(Movie movie)
+        {
+            _context.Add(movie);
+        }
+
+        public Movie GetMovie(int id) {
+            return _context.Movies.Where(m => m.Id == id).FirstOrDefault();
+        }
+
+        public void RemoveMovie(Movie movie) {
+            _context.Movies.Remove(movie);
+        }
+
+        public bool Save()
+        {
+            return (_context.SaveChanges() >= 0);
         }
     }
 }

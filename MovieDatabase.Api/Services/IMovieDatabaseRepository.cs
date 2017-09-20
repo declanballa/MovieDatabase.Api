@@ -9,11 +9,11 @@ namespace MovieDatabase.Api.Services
     public interface IMovieDatabaseRepository
     {
         IEnumerable<Movie> GetMovies();
-        // City GetCity(int cityId, bool includePointsOfInterest);
-        // IEnumerable<PointOfInterest> GetPointsOfInterestForCity(int cityId);
-        // PointOfInterest GetPointOfInterestForCity(int cityId, int pointOfInterestId);
-        // void AddPointOfInterestForCity(int cityId, PointOfInterest pointOfInterest);
-        // void DeletePointOfInterest(PointOfInterest pointOfInterest);
-        // bool Save();
+        bool MovieExists(int id);
+        void AddMovie(Movie movie);
+        Movie GetMovie(int id);
+
+        void RemoveMovie(Movie movie);
+        bool Save();
     }
 }

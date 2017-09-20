@@ -23,7 +23,7 @@ namespace MovieDatabase.Api
             Configuration = configuration;
         }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        // This is called at runtime. Used to ad services to the container:
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
@@ -34,7 +34,7 @@ namespace MovieDatabase.Api
             services.AddScoped<IMovieDatabaseRepository, MovieDatabaseRepository>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        // This is called at runtime. Used to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, MovieDbContext movieDbContext)
         {
             if (env.IsDevelopment())
@@ -45,7 +45,7 @@ namespace MovieDatabase.Api
             app.UseStatusCodePages();
 
             AutoMapper.Mapper.Initialize(config => {
-                config.CreateMap<Data.Movie, Models.MovieDto>();
+                config.CreateMap<Data.Movie, Models.MovieDto>().ReverseMap();
             });
 
             app.UseMvc();
