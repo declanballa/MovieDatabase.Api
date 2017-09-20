@@ -25,9 +25,9 @@ namespace MovieDatabase.Api.Controllers
         public IActionResult GetMovies()
         {
             var movieData = _movieDatabaseRepository.GetMovies();
-            var results = Mapper.Map<IEnumerable<MovieDto>>(movieData);
+            var movieList = Mapper.Map<IEnumerable<MovieDto>>(movieData);
 
-            return Ok(results);
+            return Ok(movieList);
         }
 
         [HttpGet("{id}", Name = "GetMovie")]
