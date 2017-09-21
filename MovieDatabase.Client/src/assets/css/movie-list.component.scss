@@ -1,0 +1,95 @@
+#movies_container {
+    background: #fff;
+    border-radius: 2px;
+    box-shadow: 1px 1px 10px -2px rgba(0, 0, 0, 0.3);
+    margin: 3%;
+    width: 93%;
+
+    #fields_grid {
+        border: 1px solid #DDDDDD;
+        font-size: 1em;
+        margin: 0;
+        width: 100%;
+
+        .row {
+            margin: 0 auto;
+            clear: both;
+            list-style: none;
+            overflow: hidden;
+        }
+    
+        .fields_header {
+            background-color: #cccccc;
+            border-bottom: 2px solid #888;
+            color: #595959;
+            font-weight: 600;
+    
+            ul li {
+                border-right: 1px solid #888;
+                float: left;
+                margin: 0;
+                padding: 1% 0 1% 1%;
+                width: 20%;
+
+                &:first-child {
+                    width: 32%;
+                }
+    
+                &:last-child {
+                    border: none;
+                }
+    
+            }
+    
+        }
+    
+        .fields_list_item {
+            background-color: #fff;
+            cursor: pointer;
+            @include vendor-prefix(transition, background-color .25s);
+    
+            &:nth-child(even) { 
+                background-color: #eeeeee;
+                @include vendor-prefix(transition, background-color .25s);
+            }
+
+            &:hover {
+                background-color: #cccccc;
+                @include vendor-prefix(transition, background-color .25s);
+            }
+    
+            ul li {
+                border-right: 1px solid #888;
+                float: left;
+                margin: 0;
+                min-height: 20px;
+                padding: 1% 0 1% 1%;
+                width: 23%;
+                width: 20%;
+                
+                &:first-child {
+                    width: 32%;
+                }
+
+                &:nth-child(4) {
+                    padding: .25% 0 0 2%;
+                }
+
+                span {
+                    color: #717171;
+                    cursor: pointer;
+                    font-size: 1.5em;
+                    padding-right: 3%;
+                }
+
+                &:last-child {
+                    border: none;
+                }
+    
+            }
+    
+        }
+    
+    }
+
+}

@@ -27,6 +27,7 @@ namespace MovieDatabase.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddCors();
 
             var connectionString = Startup.Configuration["connectionStrings:movieDatabaseDBConnectionString"];
             services.AddDbContext<MovieDbContext>(o => o.UseSqlServer(connectionString));
@@ -47,6 +48,10 @@ namespace MovieDatabase.Api
             AutoMapper.Mapper.Initialize(config => {
                 config.CreateMap<Data.Movie, Models.MovieDto>().ReverseMap();
             });
+
+            app.UseCors(
+                options => options.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader()
+            );
 
             app.UseMvc();
         }

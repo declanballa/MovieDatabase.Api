@@ -1,0 +1,28 @@
+<div id="card_backdrop"></div>
+
+<div id="movie_modal"
+     [ngClass]="{'modal_open': modalOpen}">
+  <h1 id="card_title">Edit Movie</h1>
+  <ul id="movie_properties">
+    <li class="property">
+      <label for="title">Title:</label>
+      <input name="title" />
+    </li>
+    <li class="property">
+      <label for="director">Director:</label>
+      <input name="director" />
+    </li>
+    <li class="property">
+      <label for="releaseDate">Release Date:</label>
+      <input name="releaseDate" />
+    </li>
+    <li class="property">
+        <label for="rating">Rating:</label>
+        <input name="rating" />
+      </li>
+  </ul>
+  <div class="tab_footer">
+      <span>Cancel</span>
+      <span>Save</span>
+  </div>
+</div>

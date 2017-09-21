@@ -6,6 +6,15 @@
   -ms-user-select: none;
 }
 
+// Vendor Prefixes
+@mixin vendor-prefix($name, $argument) {
+  -webkit-#{$name}: #{$argument};
+  -ms-#{$name}: #{$argument};
+  -moz-#{$name}: #{$argument};
+  -o-#{$name}: #{$argument};
+  #{$name}: #{$argument};
+}
+
 // All Preload Imports:
 @import 'reset';
 @import 'preload';
@@ -13,3 +22,7 @@
 // Isolated sass files by component:
 @import 'app.core';
 @import 'app.component';
+@import 'app-header.component';
+@import 'movie-list.component';
+@import 'movie-modal.component';
+@import 'toast.component';

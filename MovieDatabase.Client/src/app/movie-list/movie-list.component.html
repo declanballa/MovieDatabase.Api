@@ -1,0 +1,44 @@
+<div id="movies_container">
+    <div id="fields_grid">
+        <ul>
+            <li class="row fields_header">
+               <ul>
+                   <li>Title</li>
+                   <li>Director</li>
+                   <li>Release Date</li>
+                   <li>Rating</li>
+                </ul> 
+            </li>
+            <li class="row fields_list_item"
+                *ngFor="let movie of movies trackBy: trackByMovies">
+                <ul (click)="viewMovieDetails(movie)">
+                   <li>{{ movie.title }}</li>
+                   <li>{{ movie.director }}</li>
+                   <li>{{ movie.releaseDate | date:'MMM d, yyyy' }}</li>
+                   <li>
+                     <span [ngClass]="{'ion-ios-star-outline': movie.rating === 0 && movie.hovering === 0, 'ion-ios-star': movie.rating >= 1 || movie.hovering >= 1}"
+                           (mouseover)="movie.hovering = 1"
+                           (mouseout)="movie.hovering = 0"
+                           (click)="updateMovieRating(movie, 1)"></span>
+                     <span [ngClass]="{'ion-ios-star-outline': movie.rating < 2 && movie.hovering < 2, 'ion-ios-star': movie.rating >= 2 || movie.hovering >= 2}"
+                           (mouseover)="movie.hovering = 2"
+                           (mouseout)="movie.hovering = 0"
+                           (click)="updateMovieRating(movie, 2)"></span>
+                     <span [ngClass]="{'ion-ios-star-outline': movie.rating < 3 && movie.hovering < 3, 'ion-ios-star': movie.rating >= 3 || movie.hovering >= 3}"
+                           (mouseover)="movie.hovering = 3"
+                           (mouseout)="movie.hovering = 0"
+                           (click)="updateMovieRating(movie, 3)"></span>
+                     <span [ngClass]="{'ion-ios-star-outline': movie.rating < 4 && movie.hovering < 4, 'ion-ios-star': movie.rating >= 4 || movie.hovering >= 4}"
+                           (mouseover)="movie.hovering = 4"
+                           (mouseout)="movie.hovering = 0"
+                           (click)="updateMovieRating(movie, 4)"></span>
+                     <span [ngClass]="{'ion-ios-star-outline': movie.rating < 5 && movie.hovering < 5, 'ion-ios-star': movie.rating === 5 || movie.hovering === 5}"
+                           (mouseover)="movie.hovering = 5"
+                           (mouseout)="movie.hovering = 0"
+                           (click)="updateMovieRating(movie, 5)"></span>
+                   </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

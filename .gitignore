@@ -41,3 +41,4 @@ Thumbs.db
 
 MovieDatabase.Client/node_modules
 MovieDatabase.Client/src/assets/css/temp
+MovieDatabase.Client/dist
