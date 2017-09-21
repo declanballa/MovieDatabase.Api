@@ -1,3 +1,51 @@
+<div id="modal_backdrop"
+     [ngClass]="{'show_backdrop': modalOpen}"></div>
+<div id="movie_modal"
+     [ngClass]="{'modal_open': modalOpen}">
+    <h2 id="card_title"
+        *ngIf="editingMovie.id">Edit Movie</h2>
+    <h2 id="card_title"
+        *ngIf="!editingMovie.id">Add New Movie</h2>
+    <button id="remove_movie"
+            *ngIf="editingMovie.id"
+            (click)="removeMovie(editingMovie)">Remove</button>
+    <ul id="movie_properties">
+        <li class="property">
+            <label for="title">Title:</label>
+            <input type="text"
+                   name="title"
+                   [(ngModel)]="editingMovie.title" />
+        </li>
+        <li class="property">
+            <label for="director">Director:</label>
+            <input type="text"
+                   name="director"
+                   [(ngModel)]="editingMovie.director" />
+        </li>
+        <li class="property">
+            <label for="releaseDate">Release Date:</label>
+            <input type="date"
+                   name="releaseDate"
+                   [(ngModel)]="editingMovie.releaseDate" />
+        </li>
+        <li class="property">
+            <label for="rating">Rating:</label>
+            <input type="number"
+                   min="1"
+                   max="5"
+                   name="rating"
+                   [(ngModel)]="editingMovie.rating" />
+        </li>
+    </ul>
+    <div id="movie_validation"
+         *ngIf="!validMovieModel">
+        {{ validationErrorMessage }}
+    </div>
+    <div id="tab_footer">
+        <span (click)="closeMovieDetails()">Cancel</span>
+        <span (click)="saveMovie(editingMovie)">Save</span>
+    </div>
+</div>
 <div id="movies_container">
     <div id="fields_grid">
         <ul>
@@ -10,9 +58,9 @@
                 </ul> 
             </li>
             <li class="row fields_list_item"
-                *ngFor="let movie of movies trackBy: trackByMovies">
-                <ul (click)="viewMovieDetails(movie)">
-                   <li>{{ movie.title }}</li>
+                *ngFor="let movie of movies | sortMovies; trackBy: trackByMovies">
+                <ul>
+                   <li (click)="viewMovieDetails(movie)">{{ movie.title }}</li>
                    <li>{{ movie.director }}</li>
                    <li>{{ movie.releaseDate | date:'MMM d, yyyy' }}</li>
                    <li>
@@ -42,3 +90,4 @@
         </ul>
     </div>
 </div>
+<button (click)="addNewMovie()">Add</button>

@@ -30,8 +30,20 @@ export class MovieService {
     }
 
     // POST api/movies
+    addMovie(movie: Movie) {
+        let body = JSON.stringify(movie);
+        
+        return <Observable<Movie>>this.http
+            .post(moviesUrl, body, options)
+            .map(res => this.extractData<Movie>(res));
+    }
 
     // DELETE api/movies/{id}
+    removeMovie(movie: Movie) {
+        return <Observable<Movie>>this.http
+            .delete(`${moviesUrl}/${movie.id}`)
+            .map(res => this.extractData<Movie>(res));
+    }
 
     // Function to parse incoming data:
     private extractData<T>(res: Response) {
