@@ -40,3 +40,4 @@ Thumbs.db
 *.dotCover
 
 MovieDatabase.Client/node_modules
+MovieDatabase.Client/src/assets/css/temp

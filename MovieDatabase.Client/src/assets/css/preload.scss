@@ -1,0 +1,51 @@
+/*--- Preload Styles before Primary Styles ---*/
+
+html, button, input, select, textarea {
+  color: #000; }
+
+body {
+  font-size: 1em;
+  line-height: 1.4;
+  cursor: default;
+  //min-height: 1000px;
+  @include noUserSelect();
+   }
+
+/* Disables text shadows when text is highlighted for readability. */
+::-moz-selection {
+  background: #ececec; }
+
+::selection {
+  background: #ececec; }
+
+/* A better looking default horizontal rule */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0; }
+
+/* Centers text with images. */
+img {
+  vertical-align: middle; }
+
+/* Remove default fieldset styles. */
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0; }
+
+/* Disables horizontal sizing of text area so it doesn't break the layout of the site. Also, stylizes starting text to be discrete. */
+textarea {
+  resize: vertical;
+  color: #B1B1B1;
+  font-size: .9em;
+  font-style: italic; }
+
+/* Change webkit's autofill background color to primary color */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px rgba(0, 0, 0, .0) inset;
+    z-index: 0;
+}
